@@ -1,0 +1,100 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+int main()
+{
+	int s_player1, s_player2, die;
+	s_player1=0;
+	s_player2=0;
+	char start, xloop;
+	bool loop;
+	loop=1;
+	cout<<"Welcome to the game."<<endl<<"START(S)\t"<<"HELP(H)\t\t"<<"EXIT(E)"<<endl;
+	cin>>start;
+	while(loop=1)
+	{
+		while ((start!='S')&&(start!='H')&&(start!='E'))
+		{
+			cout<<"S/H/E"<<endl;
+			cin>>start;
+		}
+		if (start=='S')
+		{
+			while((s_player1<25)&&(s_player2<25))
+			{
+				int random_number;
+				char game_control;
+				if((s_player1<25)&&(s_player2<25))
+				{
+					srand((unsigned)time(0));
+					cout<<"Player 1 Turn"<<endl<<"R to roll"<<endl;
+					cin>>game_control;
+					while(game_control!='R')
+					{
+						cout<<"R to roll"<<endl;
+						cin>>game_control;
+					}
+					s_player1=s_player1 + rand()%5+1;
+					cout<<"1. "<<s_player1<<endl;
+					if(s_player1==20)
+					{
+						s_player1=s_player1-18;
+						cout<<"1. "<<s_player1<<endl;
+					}
+				}
+				if((s_player1<25)&&(s_player2<25))
+				{
+					srand((unsigned)time(0));
+					cout<<"Player 2 Turn"<<endl<<"R to roll"<<endl;
+					cin>>game_control;
+					while(game_control!='R')
+					{
+						cout<<"R to roll"<<endl;
+						cin>>game_control;
+					}
+					s_player2=s_player2 + rand()%5+1;
+					cout<<"2. "<<s_player2<<endl;
+					if(s_player2==1)
+					{
+						s_player2=s_player2+20;
+						cout<<"2. "<<s_player2<<endl;
+					}
+				}
+			}
+			if(s_player1>24)
+			{
+				cout<<"1. 25! Player 1 Won."<<endl;
+			}
+			else if(s_player2>24)
+			{
+				cout<<"2. 25! Player 2 Won."<<endl;
+			}
+			cout<<"DONE!"<<endl;
+			return 0;
+		}
+		else if(start=='H')
+		{
+			cout<<"HELP"<<endl;
+			cout<<"Get back?(Y)"<<endl;
+			cin>>xloop;
+			while(xloop!='Y')
+			{
+				cout<<"Y"<<endl;
+				cin>>xloop;
+			}
+			if (xloop=='Y')
+			{
+				loop=1;
+				continue;
+			}
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	return 0;
+}
